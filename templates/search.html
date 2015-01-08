@@ -1,0 +1,18 @@
+﻿<ion-view view-title="واژه نامه نوزده هزار لغت">
+  <ion-content>
+    <div class="list list-inset">
+	  <ion-item class="item item-input item-stable item-text-wrap">
+		<i class="icon ion-search placeholder-icon"  style="margin-right: 10px"></i>
+		<input type="search" placeholder="جستجو..." ng-model="searchData.query" style="padding-right: 10px; font-family: Nazanin; font-size: 18px; line-height: 15pt;" ng-change="search($event)">
+		<button ng-if="searchData.query.length" class="input-button button button-clear button-icon ion-close-circled" style="margin-left: -10px" ng-click="clearSearch()"></button>		
+	  </ion-item>
+	  <br/>	  
+	  <p class="text-center" ng-if="searchData.query.length && !results.length && !searching"><strong style="font-size: 16px">لغت مورد نظر پیدا نشد.</strong></p>
+	  <div class="text-center" ng-show="searching"><h2 class="icon ion-loading-d"></h2></div>
+	  <div class="text-center" ng-show="!searchData.query.length"><h1 class="icon ion-search"></h1></div>
+      <ion-item class="item-text-wrap" ng-repeat="result in results" href="#/app/search/{{result.id}}">
+		<span class="result" ng-init="$last ? highlight() : null">{{result.word}}</span>
+	  </ion-item>
+	</div>
+  </ion-content>
+</ion-view>

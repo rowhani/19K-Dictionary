@@ -1,0 +1,13 @@
+﻿<ion-view title="{{word}}">
+  <ion-nav-buttons side="right">
+	<button style="float:right" class="button button-clear button-icon ion-arrow-right-c" ng-click="back()"> بازگشت به نتایج</button>
+  </ion-nav-buttons>
+
+  <ion-content>
+	  <div class="list">	  
+		  <ion-item class="item-text-wrap" ng-repeat="meaning in meanings">
+			<span ng-bind-html="meaning"></span>
+		  </ion-item>
+	  </div>
+  </ion-content>
+</ion-view>

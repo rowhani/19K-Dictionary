@@ -1,0 +1,23 @@
+body {
+	direction: rtl;
+	font-family: "Nazanin"!important;
+	font-size: 14px;
+}
+
+.item .item-content {
+	padding: 16px 16px 16px 49px;
+}
+
+@font-face {
+    font-family: "Nazanin";
+    src: url("fonts/BNAZANIN_2.ttf");
+}
+@font-face {
+    font-family: "Nazanin";
+    src: url("fonts/BNAZANB_0.ttf");
+    font-weight: bold;
+}
+
+.highlight {
+	font-weight: bold;
+}
