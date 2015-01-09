@@ -3,7 +3,7 @@
     <div class="list list-inset">
       <ion-item class="item item-input item-dark item-text-wrap" style="padding: 10px 4px 10px 20px;">
         <i class="icon ion-search placeholder-icon" style="margin-right: 5px"></i>
-        <input type="search" placeholder="جستجو..." ng-model="searchData.query" style="padding: 5px 10px; font-family: Nazanin; font-size: 22px; line-height: 30px; background: white; margin: 8px;" ng-change="search($event)">
+        <input type="search" placeholder="جستجو..." ng-model="searchData.query" style="padding: 5px 10px; font-family: Nazanin; font-size: 22px; line-height: 30px; background: white; margin: 8px;" ng-change="search($event)" autofocus>
         <div style="width: 5px">
           <button ng-if="searchData.query.length" class="input-button button button-clear button-icon ion-close-circled" style="margin-left: -12px; padding-right: 0px" ng-click="clearSearch()"></button>
         </div>

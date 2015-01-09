@@ -5,6 +5,7 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
+    ionic.Platform.isFullScreen = true;
 
     function loadFile(path, callback) {
       $.ajax({
