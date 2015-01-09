@@ -18,7 +18,7 @@
     <div class="text-center" ng-show="!searchData.query.length">
       <h1 style="font-size: 120px; color: #ffc900" class="icon ion-android-search"></h1>
     </div>
-    <div class="list list-inset fade-in-not-out" ng-repeat="letter in letters">
+    <div class="list list-inset" ng-repeat="letter in letters">
       <ion-item class="item-divider">{{letter}}</ion-item>
       <ion-item class="item-text-wrap item-energized item-icon-right" ng-repeat="result in results[letter]" href="#/app/search/{{result.id}}">
         <i class="icon ion-document-text"></i>
