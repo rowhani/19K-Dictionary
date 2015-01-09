@@ -1,7 +1,10 @@
 body {
-
     font-family: "Nazanin"!important;
     font-size: 14px;
+}
+
+body * {
+	direction: rtl;
 }
 
 a {
@@ -26,6 +29,11 @@ input[disabled] {
 
 .item .item-content {
     padding: 16px 16px 16px 49px;
+}
+
+.bar .title {
+	position: static;
+	margin: -5px auto 0 auto;
 }
 
 .highlight {
