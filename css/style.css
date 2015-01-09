@@ -1,28 +1,82 @@
 body {
-	direction: rtl;
-	font-family: "Nazanin"!important;
-	font-size: 14px;
+    direction: rtl;
+    font-family: "Nazanin"!important;
+    font-size: 14px;
 }
 
-.item .item-content {
-	padding: 16px 16px 16px 49px;
+a {
+    color: orange;
+    text-decoration: none;
 }
 
 @font-face {
     font-family: "Nazanin";
     src: url("fonts/BNAZANIN_2.ttf");
 }
+
 @font-face {
     font-family: "Nazanin";
     src: url("fonts/BNAZANB_0.ttf");
     font-weight: bold;
 }
 
-.highlight {
-	font-weight: bold;
+.item .item-content {
+    padding: 16px 16px 16px 49px;
 }
 
-a {
-	color: orange; 
-	text-decoration: none;
+.highlight {
+    font-weight: bold;
 }
+
+.view-animate.ng-leave {
+    z-index: 1054;
+}
+
+.view-animate.ng-enter {
+    z-index: 1053;
+}
+
+.slide-animation {
+    width: 100%;
+    position: absolute;
+}
+
+.slide-animation.ng-enter {
+    animation: slideInRight 0.8s;
+    -webkit-animation: slideInRight 0.8s;
+    -moz-animation: slideInRight 0.8s;
+    -ms-animation: slideInRight 0.8s;
+}
+
+.slide-animation.ng-enter {
+    display: none;
+}
+
+.slide-animation.ng-enter-active {
+    display: block;
+}
+
+.slide-animation.ng-leave {
+    animation: slideOutLeft 0.8s;
+    -webkit-animation: slideOutLeft 0.8s;
+    -moz-animation: slideOutLeft 0.8s;
+    -ms-animation: slideOutLeft 0.8s;
+}
+
+ion-nav-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+[ng\:cloak],   
+[ng-cloak],   
+[data-ng-cloak],   
+[x-ng-cloak],   
+.ng-cloak,   
+.x-ng-cloak {
+    display: none !important;
+}  

@@ -1,16 +1,15 @@
 ﻿<ion-view title="{{word}}">
   <ion-nav-buttons side="right">
-	<button style="float: right; font-family: Nazanin" class="button button-clear button-icon ion-arrow-right-c" ng-click="back()"> بازگشت به نتایج</button>
+    <button style="float: right; font-family: Nazanin" class="button button-clear button-icon ion-arrow-right-c" ng-click="back()"> بازگشت به نتایج</button>
   </ion-nav-buttons>
-
   <ion-content>
-	<div class="card">
-	  <div class="list">	  
-		  <ion-item class="item-text-wrap item-icon-right" ng-repeat="meaning in meanings">		  
-		    <i class="icon ion-ios7-checkmark-empty"></i>
-			<span ng-bind-html="meaning" style="font-size: 18px;"></span>
-		  </ion-item>
-	  </div>
-	  </div>
+    <div class="card">
+      <div class="list">
+        <ion-item class="item-text-wrap item-icon-right" ng-repeat="meaning in meanings">
+          <i class="icon ion-ios7-checkmark-empty"></i>
+          <span ng-bind-html="meaning" style="font-size: 18px;"></span>
+        </ion-item>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
