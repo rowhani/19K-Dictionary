@@ -16,12 +16,17 @@
     $scope.letters = [];
     $scope.results = {};
     $scope.searching = false;
+	$scope.searchStarted = false;
   };
 
   $scope.clearSearch();
 
   function search() {
     console.log("Searching...");
+	$scope.searchStarted = true;
+	if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+	  $scope.$apply();
+    }
     var results = common.lookup($scope.searchData.query);
     $.each(results, function(i, r) {
       var ch = r.word.charAt(0);
@@ -33,6 +38,7 @@
     });
     $scope.searchTimeout = null;
     $scope.searching = false;
+	$scope.searchStarted = false;
     if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
       $scope.$apply();
     }

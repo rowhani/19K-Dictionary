@@ -3,7 +3,7 @@
     <div class="list list-inset">
       <ion-item class="item item-input item-dark item-text-wrap" style="padding: 10px 4px 10px 20px;">
         <i class="icon ion-search placeholder-icon" style="margin-right: 5px"></i>
-        <input type="search" placeholder="جستجو..." ng-model="searchData.query" style="padding: 5px 10px; font-family: Nazanin; font-size: 22px; line-height: 30px; background: white; margin: 8px;" ng-change="search($event)" autofocus>
+        <input type="search" placeholder="جستجو..." ng-model="searchData.query" style="padding: 5px 10px; font-family: Nazanin; font-size: 22px; line-height: 30px; background: white; margin: 8px;" ng-change="search($event)" ng-disabled="searchStarted" autofocus>
         <div style="width: 5px">
           <button ng-if="searchData.query.length" class="input-button button button-clear button-icon ion-close-circled" style="margin-left: -12px; padding-right: 0px" ng-click="clearSearch()"></button>
         </div>
@@ -18,7 +18,7 @@
     <div class="text-center" ng-show="!searchData.query.length">
       <h1 style="font-size: 120px; color: #ffc900" class="icon ion-android-search"></h1>
     </div>
-    <div class="list list-inset" ng-repeat="letter in letters">
+    <div class="list list-inset fade-in-not-out" ng-repeat="letter in letters">
       <ion-item class="item-divider">{{letter}}</ion-item>
       <ion-item class="item-text-wrap item-energized item-icon-right" ng-repeat="result in results[letter]" href="#/app/search/{{result.id}}">
         <i class="icon ion-document-text"></i>
