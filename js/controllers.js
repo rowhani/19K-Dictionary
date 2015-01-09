@@ -33,7 +33,9 @@
     });
     $scope.searchTimeout = null;
     $scope.searching = false;
-    $scope.$apply();
+    if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+      $scope.$apply();
+    }
     console.log("Results:", $scope.searchData.query, results.length);
   }
 
@@ -43,12 +45,16 @@
 
     if (!common.getCleanQuery($scope.searchData.query).length) {
       $scope.searching = false;
-      $scope.$apply();
+      if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+        $scope.$apply();
+      }
       return;
     }
 
     $scope.searching = true;
-    $scope.$apply();
+    if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+      $scope.$apply();
+    }
     if ($scope.searchTimeout) {
       window.clearTimeout($scope.searchTimeout);
     }
