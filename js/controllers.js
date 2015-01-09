@@ -22,6 +22,7 @@
 
   function search() {
     console.log("Searching...");
+	alert("Searching...");
     var results = common.lookup($scope.searchData.query);
     $.each(results, function(i, r) {
       var ch = r.word.charAt(0);
@@ -34,6 +35,7 @@
     $scope.searchTimeout = null;
     $scope.searching = false;
     $scope.$apply();
+	alert("Results...");
     console.log("Results:", $scope.searchData.query, results.length);
   }
 

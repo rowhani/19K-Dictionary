@@ -1,12 +1,15 @@
 angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
 
 .run(function($ionicPlatform, $rootScope, $state, common) {
+	alert("Run");
+	console.log("Run");
   $ionicPlatform.ready(function() {
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
     ionic.Platform.isFullScreen = true;
-
+	alert("Ready");
+	console.log("Ready");
     function loadFile(path, callback) {
       $.ajax({
         url: path,
@@ -29,14 +32,19 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
       });
 
       $rootScope.db = TAFFY(records);
+	  alert("DB Loaded");
       console.log("DB Loaded");
     }
 
     function initialize() {
+		alert("initialize");
+	console.log("initialize");
       loadFile("../db/words.txt", function(data) {
         $rootScope.words = data.split("\n");
         loadFile("../db/meanings.txt", function(data) {
           $rootScope.meanings = data.split("\n");
+		  alert("initialize done");
+	console.log("initialize done");
           createDB();
         })
       });
