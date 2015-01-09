@@ -39,9 +39,9 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
     function initialize() {
 		alert("initialize");
 	console.log("initialize");
-      loadFile("../db/words.txt", function(data) {
+      loadFile("db/words.txt", function(data) {
         $rootScope.words = data.split("\n");
-        loadFile("../db/meanings.txt", function(data) {
+        loadFile("db/meanings.txt", function(data) {
           $rootScope.meanings = data.split("\n");
 		  alert("initialize done");
 	console.log("initialize done");
