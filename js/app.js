@@ -1,11 +1,19 @@
 angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
 
-.run(function($ionicPlatform, $rootScope, $state, common) {
+.run(function($ionicPlatform, $rootScope, $state, $location, common) {
   $ionicPlatform.ready(function() {
     if (window.StatusBar) {
       StatusBar.styleDefault();
     }
     ionic.Platform.isFullScreen = true;
+	
+	document.addEventListener("backbutton", function() {
+		if ($location.path().length > '/app/search/'.length) {
+			$state.go('app.search');
+		} else {
+			navigator.app.exitApp();
+		}
+	}, false);
 
     function loadFile(path, callback) {
       $.ajax({

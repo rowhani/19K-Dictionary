@@ -31,11 +31,6 @@ input[disabled] {
     padding: 16px 16px 16px 49px;
 }
 
-.bar .title {
-	position: static;
-	margin: -5px auto 0 auto;
-}
-
 .highlight {
     font-weight: bold;
 }
