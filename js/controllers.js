@@ -13,7 +13,8 @@
   
 	$scope.clearSearch = function() {
 		$scope.searchData.query = '';
-		$scope.results = [];
+		$scope.letters = [];
+		$scope.results = {};
 		$scope.searching = false;
 	};
 	
@@ -21,17 +22,33 @@
 	
 	function search() {
 		console.log("Searching...");
-		$scope.results = [];
-		$scope.$apply();
-		$scope.results = common.lookup($scope.searchData.query);
+		var results = common.lookup($scope.searchData.query);
+		$.each(results, function(i, r) {
+			var ch = r.word.charAt(0);
+			if ($scope.letters.indexOf(ch) == -1) {
+				$scope.letters.push(ch);
+				$scope.results[ch] = [];
+			}
+			$scope.results[ch].push(r);
+		});		
 		$scope.searchTimeout = null;
 		$scope.searching = false;
 		$scope.$apply();
-		console.log("Results:", $scope.searchData.query, $scope.results.length);
+		console.log("Results:", $scope.searchData.query, results.length);
 	}
 	
 	$scope.search = function($event) {
+		$scope.letters = [];
+		$scope.results = {};
+			
+		if (!$scope.searchData.query.length) {
+			$scope.searching = false;
+			$scope.$apply();
+			return;
+		}
+		
 		$scope.searching = true;
+		$scope.$apply();
 		if ($scope.searchTimeout){
 			window.clearTimeout($scope.searchTimeout);
 		}  
@@ -59,9 +76,10 @@
 	var meanings = common.getMeanings($stateParams.wordId);	
 	$scope.meanings = [];
 	$.each(meanings, function() {
-		var parts = []
+		var parts = [];
 		$.each(this.split(" "), function() {
-			parts.push(common.getWordLink(this, $stateParams.wordId));
+			var meaning = $.trim(this.replace(")", " ").replace("(", " ").replace("»", " ").replace("«", " ").replace("»", " ").replace("  ", " "));
+			parts.push(this.replace(meaning, common.getWordLink(meaning, $stateParams.wordId)));
 		});
 		$scope.meanings.push(parts.join(" "));
 	});

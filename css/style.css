@@ -21,3 +21,8 @@ body {
 .highlight {
 	font-weight: bold;
 }
+
+a {
+	color: orange; 
+	text-decoration: none;
+}

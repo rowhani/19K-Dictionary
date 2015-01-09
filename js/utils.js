@@ -39,19 +39,19 @@
 								.replace("ء", "ی").replace("ؤ", "و").replace("ئ", "ی");
 		},
 		
-		simpleLookup: function(rawQuery, cleanQuery) {
+		simpleLookup: function(rawQuery, cleanQuery, limit) {
 			var allMatches = $rootScope.db({ key: { leftnocase: [cleanQuery, rawQuery] } }).order("word");
-			return allMatches.get();
+			return allMatches.limit(limit).get();
 		},
 
-		unorderedLookup: function(rawQuery, cleanQuery) {	
-			var allMatches = $rootScope.db({ key: { likenocase: [cleanQuery, rawQuery] } }).order("word");
+		unorderedLookup: function(rawQuery, cleanQuery, limit) {	
+			var allMatches = $rootScope.db({ key: { likenocase: [cleanQuery, rawQuery] } }).order("word").limit(limit);
 			return allMatches.get();
 		},
 		
-		orderedLookup: function(rawQuery, cleanQuery) {
-			var partialMatches = $rootScope.db({ key: { likenocase: [cleanQuery, rawQuery] } }).order("word");
-			var exactMatches = $rootScope.db({ key: { likenocase: [cleanQuery, rawQuery] }, word: { leftnocase: rawQuery } }).order("word");
+		orderedLookup: function(rawQuery, cleanQuery, limit) {
+			var partialMatches = $rootScope.db({ key: { likenocase: [cleanQuery, rawQuery] } }).order("word").limit(limit);
+			var exactMatches = $rootScope.db({ key: { likenocase: [cleanQuery, rawQuery] }, word: { leftnocase: rawQuery } }).order("word").limit(limit);
 			var allMatches = exactMatches.get();
 			var words = $.map(allMatches, function(r, i) { return r.word; });
 			partialMatches.each(function (record, recordnumber) { 
@@ -62,7 +62,10 @@
 			return allMatches;
 		},
 		
-		lookup: function(query) {
+		lookup: function(query, limit) {
+			if (!limit) {
+				limit = 50;
+			}
 			var rawQuery = this.getRawQuery(query);
 			var cleanQuery = this.getCleanQuery(query);
 			
@@ -70,9 +73,9 @@
 				return []
 			}
 			else if (cleanQuery.length < 3) {
-				return this.simpleLookup(rawQuery, cleanQuery);
+				return this.simpleLookup(rawQuery, cleanQuery, limit);
 			} else {
-				return this.orderedLookup(rawQuery, cleanQuery);
+				return this.orderedLookup(rawQuery, cleanQuery, limit);
 			}
 		},
 		
@@ -94,7 +97,7 @@
 			});
 			
 			meanings = $.map(meanings.split("-"), function(m, i) { 
-				return _this.convertNumber($.trim(m).replace(/^[\.]+|[\.]+$/g, ""));
+				return _this.convertNumber($.trim(m).replace("  ", " ").replace(/^[\.]+|[\.]+$/g, ""));
 			});
 			
 			return meanings;
