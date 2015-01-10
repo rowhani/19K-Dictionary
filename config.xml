@@ -61,7 +61,7 @@
   
   <!-- Custom plugins -->
   <gap:plugin name="com.ionic.keyboard" />
-  <gap:plugin name="org.chromium.system.cpu" />
+  <gap:plugin name="com.ankamagames.plugins.sysinfo" />
 
   <!-- Define app icon for each platform. -->
   <icon src="icon.png" />
