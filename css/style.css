@@ -35,6 +35,20 @@ input[disabled] {
     background-color: #ffe900;
 }
 
+.item-radio .radio-icon {
+    left: 0;
+	right: auto;
+}
+
+.item-radio input {
+	right: -9999;
+	left: 0;
+}
+
+.item-radio input:checked~.item-content {
+    background-color: lightgreen;
+}
+
 .highlight {
     font-weight: bold;
 }

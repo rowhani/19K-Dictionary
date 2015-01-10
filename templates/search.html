@@ -1,6 +1,14 @@
 ﻿<ion-view view-title="واژه نامه نوزده هزار لغت">
   <ion-content>
     <div class="list list-inset">
+      <ion-item class="item item-divider item-dark item-icon-right " style="font-size: 18px; padding: 0; font-weight: bold" href="#" ng-click="toggleSearchModeViewer()">
+        <i class="icon ion-ios7-minus-empty" ng-show="searchModeShown"></i>
+        <i class="icon ion-ios7-plus-empty" ng-show="!searchModeShown"></i> روش جستجو
+      </ion-item>
+      <ion-radio ng-model="searchMode" ng-value="'automatic'" style="font-size: 18px; font-weight: bold" ng-change="changeSearchMode('automatic')" ng-show="searchModeShown">جستجوی اتوماتیک و قوی</ion-radio>
+      <ion-radio ng-model="searchMode" ng-value="'manual'" style="font-size: 18px; font-weight: bold" ng-change="changeSearchMode('manual')" ng-show="searchModeShown">جستجوی دستی و سریع</ion-radio>
+    </div>
+    <div class="list list-inset">
       <ion-item class="item item-input item-dark item-text-wrap" style="padding: 7px 4px 7px 20px;" ng-if="!lightVersion">
         <i class="icon ion-search placeholder-icon" style="margin-right: 5px; font-size: 32px;"></i>
         <input type="search" placeholder="جستجو..." ng-model="searchData.query" style="padding: 5px 10px; font-family: Nazanin; font-size: 24px; line-height: 30px; background: white; margin: 8px;" ng-change="search($event)" ng-disabled="searchStarted" autofocus>

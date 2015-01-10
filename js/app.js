@@ -1,6 +1,6 @@
-angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
+﻿angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
 
-.run(function($ionicPlatform, $rootScope, $state, $location, common) {
+.run(function($ionicPlatform, $rootScope, $state, $location, $ionicLoading, common, localStorage) {
   $ionicPlatform.ready(function() {
     if (window.StatusBar) {
       StatusBar.styleDefault();
@@ -41,23 +41,22 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
     }
 
     function initialize() {
+      $ionicLoading.show({
+        template: 'در حال بارگذاری...'
+      });
       loadFile("db/words.txt", function(data) {
         $rootScope.words = data.split("\n");
         loadFile("db/meanings.txt", function(data) {
           $rootScope.meanings = data.split("\n");
           createDB();
+          $ionicLoading.hide();
         })
       });
     }
 
     initialize();
-	
-	alert(angular.toJson(ChromeSystemCpu))
-    if (typeof Sysinfo !== 'undefined') {
-      $rootScope.lightVersion = !Sysinfo.cpu.cores || Sysinfo.cpu.cores < 2;
-    } else {
-      $rootScope.lightVersion = false;
-    }
+
+    $rootScope.lightVersion = localStorage.get("searchMode") == 'manual';
   });
 })
 

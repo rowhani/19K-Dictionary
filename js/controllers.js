@@ -4,8 +4,21 @@
   console.log("App");
 })
 
-.controller('SearchCtrl', function($scope, $rootScope, $timeout, common) {
+.controller('SearchCtrl', function($scope, $rootScope, $timeout, $window, common, localStorage) {
   console.log("Search");
+
+  $scope.searchMode = $rootScope.lightVersion ? 'manual' : 'automatic';
+
+  $scope.changeSearchMode = function(searchMode) {
+    localStorage.set("searchMode", searchMode);
+    $window.location.reload();
+  };
+
+  $scope.searchModeShown = false;
+  $scope.toggleSearchModeViewer = function() {
+    $scope.searchModeShown = !$scope.searchModeShown;
+    $scope.apply();
+  }
 
   $scope.searchData = {
     query: ''
