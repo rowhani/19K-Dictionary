@@ -21,6 +21,8 @@
   $scope.searchModeShown = false;
   $scope.toggleSearchModeViewer = function() {
     $scope.searchModeShown = !$scope.searchModeShown;
+	alert($scope.searchMode);
+	$scope.$apply();
   }
 
   $scope.searchData = {
