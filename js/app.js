@@ -52,9 +52,12 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
 
     initialize();
 
-    alert(angular.toJson(Sysinfo));
-
-    $rootScope.lightVersion = false //Sysinfo;
+    alert(angular.toJson(ChromeSystemCpu));
+    if (typeof ChromeSystemCpu !== 'undefined') {
+      $rootScope.lightVersion = ChromeSystemCpu.numOfProcessors < 2;
+    } else {
+      $rootScope.lightVersion = false
+    }
   });
 })
 
