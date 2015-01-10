@@ -11,6 +11,9 @@
 
   $scope.changeSearchMode = function(searchMode) {
     localStorage.set("searchMode", searchMode);
+    $rootScope.lightVersion = searchMode == 'manual';
+    $scope.searchMode = searchMode;
+    $scope.$apply();
     $window.location.reload();
   };
 
