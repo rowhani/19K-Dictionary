@@ -7,7 +7,7 @@
 .controller('SearchCtrl', function($scope, $rootScope, $state, $timeout, $window, common, localStorage) {
   console.log("Search");
 
-  $scope.searchMode = $rootScope.lightVersion ? 'manual' : 'automatic';
+  $scope.searchMode = localStorage.get("searchMode") || "automatic";
   $scope.$apply();
   
   $scope.changeSearchMode = function(searchMode) {
