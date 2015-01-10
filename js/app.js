@@ -51,7 +51,8 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
     }
 
     initialize();
-
+	
+	alert(angular.toJson(ChromeSystemCpu))
     if (typeof Sysinfo !== 'undefined') {
       $rootScope.lightVersion = !Sysinfo.cpu.cores || Sysinfo.cpu.cores < 2;
     } else {
