@@ -21,7 +21,6 @@
   $scope.searchModeShown = false;
   $scope.toggleSearchModeViewer = function() {
     $scope.searchModeShown = !$scope.searchModeShown;
-	alert($scope.searchMode + " " + $rootScope.lightVersion + " " + localStorage.get("searchMode"));
 	$scope.$apply();
   }
 
