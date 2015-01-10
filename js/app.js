@@ -6,14 +6,14 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
       StatusBar.styleDefault();
     }
     ionic.Platform.isFullScreen = true;
-	
-	document.addEventListener("backbutton", function() {
-		if ($location.path().length > '/app/search/'.length) {
-			$state.go('app.search');
-		} else {
-			navigator.app.exitApp();
-		}
-	}, false);
+
+    document.addEventListener("backbutton", function() {
+      if ($location.path().length > '/app/search/'.length) {
+        $state.go('app.search');
+      } else {
+        navigator.app.exitApp();
+      }
+    }, false);
 
     function loadFile(path, callback) {
       $.ajax({
@@ -32,7 +32,7 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
           id: i,
           key: common.getCleanQuery($rootScope.words[i]),
           word: common.getRawQuery($rootScope.words[i]),
-          meaning: $.trim($rootScope.meanings[i])
+          meaning: $rootScope.meanings[i].trim()
         });
       });
 
@@ -51,6 +51,10 @@ angular.module('19kdic', ['ionic', '19kdic.utils', '19kdic.controllers'])
     }
 
     initialize();
+
+    alert(angular.toJson(Sysinfo));
+
+    $rootScope.lightVersion = false //Sysinfo;
   });
 })
 

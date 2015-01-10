@@ -31,6 +31,10 @@ input[disabled] {
     padding: 16px 16px 16px 49px;
 }
 
+.item-complex.item-energized>.item-content {
+    background-color: #ffe900;
+}
+
 .highlight {
     font-weight: bold;
 }
